@@ -5,10 +5,59 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="stylesheet" href="./src/globals.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Wiki Analytics</title>
   </head>
   <body>
-    <div></div>
-    <script type="module" src="./src/main.js"></script>
+    <header>
+      <h1 class="font-bold text-2xl text-center m-4">
+        Wiki Analytics Mini Service
+      </h1>
+    </header>
+
+    <form id="search-bar" class="flex md:flex-row items-start my-2 gap-4 px-4">
+      <div class="flex flex-col gap-1 flex-1">
+        <input
+          id="page-url"
+          name="page-url"
+          type="text"
+          placeholder="Wiki-Page URL"
+          class="border-2 border-gray-300 rounded-md p-2 min-h-12"
+        />
+        <span class="text-red-500 hidden" id="url-error"></span>
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <select
+          id="period"
+          name="period"
+          class="border-2 border-gray-300 rounded-md p-2 min-h-12"
+        >
+          <option value="30">Last 30 days</option>
+          <option value="90">Last 90 days</option>
+          <option value="365">Last 365 days</option>
+        </select>
+        <span class="text-red-500 hidden" id="period-error"></span>
+      </div>
+
+      <button
+        type="submit"
+        class="bg-emerald-400 rounded-md p-2 cursor-pointer hover:bg-emerald-500 min-h-12"
+      >
+        View Analytics
+      </button>
+
+      <script type="module" src="./src/search.js"></script>
+    </form>
+
+    <div class="px-4 max-w-6xl mx-auto my-4">
+      <a
+        class="text-gray-600 block my-2"
+        id="article-info"
+        target="_blank"
+        href="#"
+      ></a>
+      <canvas id="my-chart" class="border-2 border-gray-300 p-2"></canvas>
+      <script type="module" src="./src/chart.js"></script>
+    </div>
   </body>
 </html>
